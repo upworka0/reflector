@@ -48,18 +48,18 @@ def index():
     return message, status_code
 
 
-@app.route('/url', methods=['GET', 'POST'])
-def url():
-    """
-        Form to edit api gateway url
-        """
-    if request.method == 'POST':
-        # store url to temp file
-        store_url(request.form['url'])
-        flash('Successfully updated.', 'success')
-        return redirect('/url')
-
-    return render_template('form.html', url=get_api_url())
+# @app.route('/url', methods=['GET', 'POST'])
+# def url():
+#     """
+#         Form to edit api gateway url
+#         """
+#     if request.method == 'POST':
+#         # store url to temp file
+#         store_url(request.form['url'])
+#         flash('Successfully updated.', 'success')
+#         return redirect('/url')
+#
+#     return render_template('form.html', url=get_api_url())
 
 
 if __name__ == "__main__":
