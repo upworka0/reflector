@@ -18,7 +18,7 @@ ENV_FILE = "%s/.env" % BASE_DIR
 # retrieve url from env file
 def get_api_url():
     file = open(ENV_FILE, "r")
-    return file.read()
+    return file.read().strip()
 
 
 # store url to env file
