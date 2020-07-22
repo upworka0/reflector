@@ -35,13 +35,17 @@ def index():
         """
 
     request_url = get_api_url()
-    data = request.get_json()
-
-    res = requests.post(request_url, json.dumps(data))
+    status_code = 400
     message = ""
-    if res.status_code != 200:
-        message = res.text
-    return message, res.status_code
+    try:
+        data = request.get_json()
+        res = requests.post(request_url, json.dumps(data))
+        status_code = res.status_code
+
+    except Exception as e:
+        message = str(e)
+
+    return message, status_code
 
 
 @app.route('/url', methods=['GET', 'POST'])
