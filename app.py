@@ -37,9 +37,14 @@ def index():
     request_url = get_api_url()
     status_code = 400
     message = ""
+
     try:
         data = request.get_json()
-        res = requests.post(request_url, json.dumps(data))
+        headers = {
+            'Content-Type': request.headers['Content-Type'],
+            'X-API-Key': request.headers['X-API-Key']
+        }
+        res = requests.post(request_url, json.dumps(data), headers=headers)
         status_code = res.status_code
 
     except Exception as e:
